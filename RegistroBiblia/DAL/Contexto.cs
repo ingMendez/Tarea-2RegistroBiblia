@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using RegistroBiblia.Entidades;
+﻿using System.Data.Entity;
+using RegistroBiblia.UI.Registros;
 
 namespace RegistroBiblia.DAL
 {
     public class Contexto : DbContext
     {
-        public DbSet<Libros> libros { get; set; }
+        public DbSet<rLibros> libros { get; set; }
 
         public Contexto() : base("ConStr")
         { }

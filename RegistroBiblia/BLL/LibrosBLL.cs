@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.Entity;
 using RegistroBiblia.DAL;
-using RegistroBiblia.Entidades;
-using System.Linq.Expressions;
+using RegistroBiblia.UI.Registros;
 
 namespace RegistroBiblia.BLL
 
@@ -13,14 +9,14 @@ namespace RegistroBiblia.BLL
     public class LibrosBLL
     {
 
-        public static bool Guardar(Libros libro)
+        public static bool Guardar(rLibros libros)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                if (contexto.libros.Add(libro) != null)
+                if (contexto.libros.Add(libros) != null)
                 {
                     contexto.SaveChanges();
                     paso = true;
@@ -34,7 +30,7 @@ namespace RegistroBiblia.BLL
             return paso;
         }
 
-        public static bool Modificar(Libros libro)
+        public static bool Modificar(rLibros libro)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -61,7 +57,7 @@ namespace RegistroBiblia.BLL
             Contexto contexto = new Contexto();
             try
             {
-                Libros libro = new Libros();
+                rLibros libro = new rLibros();
                 contexto.libros.Remove(libro);
 
                 if (contexto.SaveChanges() > 0)

@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="BLL\LibrosBLL.cs" />
     <Compile Include="DAL\Contexto.cs" />
-    <Compile Include="Entidades\Libros.cs" />
     <Compile Include="MainForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +60,9 @@
     <Compile Include="UI\Registros\rLibros.Designer.cs">
       <DependentUpon>rLibros.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MainForm1.resx">
+      <DependentUpon>MainForm1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -86,6 +88,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Entidades\" />
     <Folder Include="Resources\" />
     <Folder Include="UI\Consultas\" />
     <Folder Include="UI\Reportes\" />
