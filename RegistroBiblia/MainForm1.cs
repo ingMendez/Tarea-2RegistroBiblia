@@ -1,4 +1,5 @@
-﻿using RegistroBiblia.UI.Registros;
+﻿using RegistroBiblia.UI.Consultas;
+using RegistroBiblia.UI.Registros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,13 +26,9 @@ namespace RegistroBiblia
 
         private void libroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rLibros libro = new rLibros();
-            libro.ShowDialog();
-        }
-
-        private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            rLibros c = new rLibros();
+            
+            c.Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -47,6 +44,25 @@ namespace RegistroBiblia
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void consultasToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void librosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cconsultas c = new Cconsultas();
+            c.MdiParent = this;
+            c.Show();
+        }
+
+        private void libroToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            rLibros c = new rLibros();
+            c.MdiParent = this;
+            c.Show();
         }
     }
 }

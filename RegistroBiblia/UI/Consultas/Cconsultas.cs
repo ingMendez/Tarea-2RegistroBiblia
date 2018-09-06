@@ -7,16 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace RegistroBiblia.UI.Registros
+namespace RegistroBiblia.UI.Consultas
 {
-    public partial class rLibros : Form
+    public partial class Cconsultas : Form
     {
-        public rLibros()
+        public Cconsultas()
         {
             InitializeComponent();
         }
 
-        private void rLibros_Load(object sender, EventArgs e)
+        private void Buscar_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NombreLabel_Click(object sender, EventArgs e)
         {
 
         }

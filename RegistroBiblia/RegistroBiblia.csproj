@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BLL\LibrosBLL.cs" />
     <Compile Include="DAL\Contexto.cs" />
+    <Compile Include="Entidades\Libros.cs" />
     <Compile Include="MainForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +55,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Consultas\Cconsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\Cconsultas.Designer.cs">
+      <DependentUpon>Cconsultas.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Registros\rLibros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +79,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Consultas\Cconsultas.resx">
+      <DependentUpon>Cconsultas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\rLibros.resx">
       <DependentUpon>rLibros.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,9 +98,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entidades\" />
     <Folder Include="Resources\" />
-    <Folder Include="UI\Consultas\" />
     <Folder Include="UI\Reportes\" />
   </ItemGroup>
   <ItemGroup>

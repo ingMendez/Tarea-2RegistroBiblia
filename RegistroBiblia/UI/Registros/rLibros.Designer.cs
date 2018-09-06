@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 299);
+            this.ClientSize = new System.Drawing.Size(436, 299);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.TipId_comboBox);
             this.Controls.Add(this.Siglas_textBox);
@@ -205,7 +205,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "rLibros";
-            this.Text = "rLibros";
+            this.Text = "Registro de Libros";
+            this.Load += new System.EventHandler(this.rLibros_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
