@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace RegistroBiblia
+namespace RegistroBiblia.UI.Registros
 {
-    public partial class Form1 : Form
+    public partial class rLibros : Form
     {
-        public Form1()
+        public rLibros()
         {
             InitializeComponent();
         }

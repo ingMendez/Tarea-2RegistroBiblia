@@ -1,6 +1,6 @@
 ﻿namespace RegistroBiblia
 {
-    partial class Form1
+    partial class MainForm1
     {
         /// <summary>
         /// Required designer variable.
