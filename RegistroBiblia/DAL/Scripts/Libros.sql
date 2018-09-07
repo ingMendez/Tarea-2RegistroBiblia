@@ -1,11 +1,13 @@
-CREATE DATABASE LibrosDB
-go
-use LibrosDB
-go
+create DATABASE LibrosDB
+GO
+USE LibrosDB
+GO
 CREATE TABLE Libros
 (
-libroId int primary key identity,
-descripcion varchar(50),
-siglas varchar(20),
-tipoId varchar(40),
+LibroId int primary key identity,
+Descripcion varchar(50),
+Siglas varchar(20),
+TipoId varchar(40),
 );
+
+select * from Libros

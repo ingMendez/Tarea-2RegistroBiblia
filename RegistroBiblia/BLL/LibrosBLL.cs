@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 using RegistroBiblia.DAL;
 using RegistroBiblia.UI.Registros;
+using RegistroLibroBiblia.Entidades;
 
 namespace RegistroBiblia.BLL
 
@@ -9,14 +13,14 @@ namespace RegistroBiblia.BLL
     public class LibrosBLL
     {
 
-        public static bool Guardar(rLibros libros)
+        public static bool Guardar(Libros libros)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                if (contexto.libros.Add(libros) != null)
+                if (contexto.libros.Add(libros)!=null)
                 {
                     contexto.SaveChanges();
                     paso = true;
@@ -30,7 +34,9 @@ namespace RegistroBiblia.BLL
             return paso;
         }
 
-        public static bool Modificar(rLibros libro)
+    
+
+        public static bool Modificar(Libros libro)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -57,7 +63,7 @@ namespace RegistroBiblia.BLL
             Contexto contexto = new Contexto();
             try
             {
-                rLibros libro = new rLibros();
+                Libros libro = contexto.libros.Find(id);
                 contexto.libros.Remove(libro);
 
                 if (contexto.SaveChanges() > 0)
@@ -72,7 +78,7 @@ namespace RegistroBiblia.BLL
             }
             return paso;
         }
-        /*
+        
         public static Libros Buscar(int id)
         {
             Contexto contexto = new Contexto();
@@ -89,7 +95,7 @@ namespace RegistroBiblia.BLL
             }
             return libro;
         }
-
+        
         public static List<Libros> GetList(Expression<Func<Libros, bool>> expression)
         {
             List<Libros> libros = new List<Libros>();
@@ -106,6 +112,6 @@ namespace RegistroBiblia.BLL
             }
             return libros;
         }
-        */
+        
     }
 }

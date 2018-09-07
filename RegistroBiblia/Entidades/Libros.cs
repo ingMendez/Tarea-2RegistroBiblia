@@ -17,12 +17,16 @@ namespace RegistroLibroBiblia.Entidades
 
         public string TipoId { get; set; }
 
+        //public DateTime Fechas { get; set;}
+
         public Libros()
         {
             LibroId = 0;
             Descripcion = string.Empty;
             Siglas = string.Empty;
             TipoId = string.Empty;
+           // Fechas = DateTime.Now;
+
         }
     }
 }

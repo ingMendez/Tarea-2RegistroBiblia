@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,10 +44,13 @@
             this.Nuevo_button = new System.Windows.Forms.Button();
             this.Eliminar_button = new System.Windows.Forms.Button();
             this.Guardar_button = new System.Windows.Forms.Button();
+            this.Buscar_button = new System.Windows.Forms.Button();
+            this.SuperErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LibroId_numericUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SuperErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -115,9 +119,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(9, 197);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.Size = new System.Drawing.Size(90, 16);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Tipo Id";
+            this.label2.Text = "Testamento";
             // 
             // LibroId_numericUpDown
             // 
@@ -155,13 +159,13 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.groupBox2.Controls.Add(this.Nuevo_button);
             this.groupBox2.Controls.Add(this.Eliminar_button);
             this.groupBox2.Controls.Add(this.Guardar_button);
-            this.groupBox2.Location = new System.Drawing.Point(153, 242);
+            this.groupBox2.Location = new System.Drawing.Point(49, 242);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(224, 48);
+            this.groupBox2.Size = new System.Drawing.Size(328, 48);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
@@ -169,31 +173,52 @@
             // 
             this.Nuevo_button.Location = new System.Drawing.Point(6, 8);
             this.Nuevo_button.Name = "Nuevo_button";
-            this.Nuevo_button.Size = new System.Drawing.Size(44, 40);
+            this.Nuevo_button.Size = new System.Drawing.Size(55, 40);
             this.Nuevo_button.TabIndex = 1;
+            this.Nuevo_button.Text = "nuevo";
             this.Nuevo_button.UseVisualStyleBackColor = true;
+            this.Nuevo_button.Click += new System.EventHandler(this.Nuevo_button_Click);
             // 
             // Eliminar_button
             // 
-            this.Eliminar_button.Location = new System.Drawing.Point(167, 7);
+            this.Eliminar_button.Location = new System.Drawing.Point(254, 8);
             this.Eliminar_button.Name = "Eliminar_button";
-            this.Eliminar_button.Size = new System.Drawing.Size(44, 40);
+            this.Eliminar_button.Size = new System.Drawing.Size(68, 40);
             this.Eliminar_button.TabIndex = 2;
+            this.Eliminar_button.Text = "Eliminar";
             this.Eliminar_button.UseVisualStyleBackColor = true;
+            this.Eliminar_button.Click += new System.EventHandler(this.Eliminar_button_Click);
             // 
             // Guardar_button
             // 
-            this.Guardar_button.Location = new System.Drawing.Point(88, 8);
+            this.Guardar_button.Location = new System.Drawing.Point(129, 8);
             this.Guardar_button.Name = "Guardar_button";
-            this.Guardar_button.Size = new System.Drawing.Size(44, 40);
+            this.Guardar_button.Size = new System.Drawing.Size(55, 40);
             this.Guardar_button.TabIndex = 0;
+            this.Guardar_button.Text = "guardar";
             this.Guardar_button.UseVisualStyleBackColor = true;
+            this.Guardar_button.Click += new System.EventHandler(this.Guardar_button_Click);
+            // 
+            // Buscar_button
+            // 
+            this.Buscar_button.Location = new System.Drawing.Point(303, 62);
+            this.Buscar_button.Name = "Buscar_button";
+            this.Buscar_button.Size = new System.Drawing.Size(61, 40);
+            this.Buscar_button.TabIndex = 15;
+            this.Buscar_button.Text = "buscar";
+            this.Buscar_button.UseVisualStyleBackColor = true;
+            this.Buscar_button.Click += new System.EventHandler(this.Buscar_button_Click);
+            // 
+            // SuperErrorProvider
+            // 
+            this.SuperErrorProvider.ContainerControl = this;
             // 
             // rLibros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 299);
+            this.ClientSize = new System.Drawing.Size(426, 299);
+            this.Controls.Add(this.Buscar_button);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.TipId_comboBox);
             this.Controls.Add(this.Siglas_textBox);
@@ -212,6 +237,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LibroId_numericUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SuperErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +260,7 @@
         private System.Windows.Forms.Button Nuevo_button;
         private System.Windows.Forms.Button Eliminar_button;
         private System.Windows.Forms.Button Guardar_button;
+        private System.Windows.Forms.Button Buscar_button;
+        private System.Windows.Forms.ErrorProvider SuperErrorProvider;
     }
 }

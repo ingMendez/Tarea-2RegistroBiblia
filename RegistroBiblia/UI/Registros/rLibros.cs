@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RegistroBiblia.BLL;
+using RegistroLibroBiblia.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,5 +22,155 @@ namespace RegistroBiblia.UI.Registros
         {
 
         }
+        private void Limpiar()
+        {
+            LibroId_numericUpDown.Value = 0;
+             string.IsNullOrWhiteSpace(Descripcion_textBox.Text);
+             string.IsNullOrWhiteSpace(Siglas_textBox.Text);
+             string.IsNullOrWhiteSpace(TipId_comboBox.Text);
+        }
+        // aqui se crea el boton nuevo
+        private void Nuevo_button_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private Libros LlenaClase()
+        {
+            Libros libros = new Libros();
+            libros.LibroId = Convert.ToInt32(LibroId_numericUpDown.Value);
+            libros.Descripcion = Descripcion_textBox.Text;
+            libros.Siglas = Siglas_textBox.Text;
+            libros.TipoId = TipId_comboBox.Text;
+            return libros;
+        }
+        private Libros LlenaCampo(Libros libros)
+        {
+           // Libros libros = new Libros();
+            libros.LibroId = Convert.ToInt32(LibroId_numericUpDown.Value);
+            Descripcion_textBox.Text= libros.Descripcion ;
+            Siglas_textBox.Text= libros.Siglas ;
+            TipId_comboBox.Text=libros.TipoId ;
+            return libros;
+        }
+
+        private bool validar()
+        {
+            bool TieneErrores = false;
+            if (string.IsNullOrWhiteSpace(Descripcion_textBox.Text))
+            {
+                MessageBox.Show("Debe Llenar el campo");
+                TieneErrores = true;
+            }
+            return TieneErrores;
+        }
+        private bool GuardarValidar()
+        {
+            bool paso = true;
+            if ( string.IsNullOrWhiteSpace(Descripcion_textBox.Text) ||  string.IsNullOrWhiteSpace(Siglas_textBox.Text) ||string.IsNullOrWhiteSpace(TipId_comboBox.Text))
+            {
+
+                if ( string.IsNullOrWhiteSpace(Descripcion_textBox.Text))
+                {
+                    SuperErrorProvider.SetError(Descripcion_textBox, "ingrese Descripcion");
+                    Descripcion_textBox.Focus();
+                }
+                if( string.IsNullOrWhiteSpace(Siglas_textBox.Text))
+                {
+                    SuperErrorProvider.SetError( Siglas_textBox, "ingrese la siglas");
+                    Siglas_textBox.Focus();
+                }
+                if( string.IsNullOrWhiteSpace(TipId_comboBox.Text))
+                {
+                    SuperErrorProvider.SetError(TipId_comboBox, "ingrese el tipo de libro");
+                    TipId_comboBox.Focus();
+                }
+                paso = false;
+            }
+            return paso;
+        }
+
+        private void Guardar_button_Click(object sender, EventArgs e)
+        {
+            SuperErrorProvider.Clear();
+            int id = (int)LibroId_numericUpDown.Value;
+            //int.TryParse(LibroId_numericUpDown.Text, out  id);
+            Libros libros = LibrosBLL.Buscar(id);
+            Libros libros_guardar = LlenaClase();
+           // bool paso = false;
+          //  Libros libro = new Libros();
+            if (libros == null)
+            {
+                if (GuardarValidar())
+                {
+                    if (LibrosBLL.Guardar(libros_guardar))
+                    {
+                        MessageBox.Show("libro guardado");
+                        Nuevo_button.PerformClick();
+                    }
+                    
+                    else
+                    MessageBox.Show("libro no guadado");
+
+                }
+            }
+            else
+            {
+                if (GuardarValidar())
+                {
+                    if (LibrosBLL.Modificar(libros_guardar))
+                        MessageBox.Show("libro modificada");
+                    else
+                        MessageBox.Show("libro no modificada");
+                }
+            }  
+              
+        }
+
+        private void Eliminar_button_Click(object sender, EventArgs e)
+        {
+            SuperErrorProvider.Clear();
+            int id;
+            int.TryParse(LibroId_numericUpDown.Text, out id);
+
+            Libros libros = BLL.LibrosBLL.Buscar(id);
+
+
+            
+            if (libros != null)
+            {
+                BLL.LibrosBLL.Eliminar(id);
+                MessageBox.Show("nose puede eliminar un libro que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("libro eliminado");
+            }
+          
+        }
+
+        private void Buscar_button_Click(object sender, EventArgs e)
+        {
+            SuperErrorProvider.Clear();
+            int id;
+            Libros libros = new Libros();
+             int.TryParse(LibroId_numericUpDown.Text, out id);
+           libros = LibrosBLL.Buscar(id);
+            if(libros != null)
+            {
+                MessageBox.Show("libro encontrado");
+ 
+               LlenaCampo(libros);
+            }
+            else
+            {
+                MessageBox.Show("libro no encontrado");
+            }
+
+
+        }
+
+     
+     
     }
 }
