@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rLibros));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,9 +56,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.SuperErrorProvider.SetIconAlignment(this.groupBox1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.groupBox1.Location = new System.Drawing.Point(-1, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(425, 53);
@@ -66,9 +70,13 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(50, 11);
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(23, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 39);
+            this.pictureBox1.Size = new System.Drawing.Size(50, 38);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -127,7 +135,7 @@
             // 
             this.LibroId_numericUpDown.Location = new System.Drawing.Point(153, 68);
             this.LibroId_numericUpDown.Name = "LibroId_numericUpDown";
-            this.LibroId_numericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.LibroId_numericUpDown.Size = new System.Drawing.Size(80, 20);
             this.LibroId_numericUpDown.TabIndex = 10;
             // 
             // Descripcion_textBox
@@ -171,9 +179,10 @@
             // 
             // Nuevo_button
             // 
-            this.Nuevo_button.Location = new System.Drawing.Point(6, 8);
+            this.Nuevo_button.Image = ((System.Drawing.Image)(resources.GetObject("Nuevo_button.Image")));
+            this.Nuevo_button.Location = new System.Drawing.Point(6, 0);
             this.Nuevo_button.Name = "Nuevo_button";
-            this.Nuevo_button.Size = new System.Drawing.Size(55, 40);
+            this.Nuevo_button.Size = new System.Drawing.Size(55, 48);
             this.Nuevo_button.TabIndex = 1;
             this.Nuevo_button.Text = "nuevo";
             this.Nuevo_button.UseVisualStyleBackColor = true;
@@ -181,26 +190,29 @@
             // 
             // Eliminar_button
             // 
-            this.Eliminar_button.Location = new System.Drawing.Point(254, 8);
+            this.Eliminar_button.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar_button.Image")));
+            this.Eliminar_button.Location = new System.Drawing.Point(254, 0);
             this.Eliminar_button.Name = "Eliminar_button";
-            this.Eliminar_button.Size = new System.Drawing.Size(68, 40);
+            this.Eliminar_button.Size = new System.Drawing.Size(68, 48);
             this.Eliminar_button.TabIndex = 2;
-            this.Eliminar_button.Text = "Eliminar";
             this.Eliminar_button.UseVisualStyleBackColor = true;
             this.Eliminar_button.Click += new System.EventHandler(this.Eliminar_button_Click);
             // 
             // Guardar_button
             // 
-            this.Guardar_button.Location = new System.Drawing.Point(129, 8);
+            this.Guardar_button.Image = ((System.Drawing.Image)(resources.GetObject("Guardar_button.Image")));
+            this.Guardar_button.Location = new System.Drawing.Point(129, 0);
             this.Guardar_button.Name = "Guardar_button";
-            this.Guardar_button.Size = new System.Drawing.Size(55, 40);
+            this.Guardar_button.Size = new System.Drawing.Size(55, 48);
             this.Guardar_button.TabIndex = 0;
             this.Guardar_button.Text = "guardar";
+            this.Guardar_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Guardar_button.UseVisualStyleBackColor = true;
             this.Guardar_button.Click += new System.EventHandler(this.Guardar_button_Click);
             // 
             // Buscar_button
             // 
+            this.Buscar_button.Image = ((System.Drawing.Image)(resources.GetObject("Buscar_button.Image")));
             this.Buscar_button.Location = new System.Drawing.Point(303, 62);
             this.Buscar_button.Name = "Buscar_button";
             this.Buscar_button.Size = new System.Drawing.Size(61, 40);
@@ -229,6 +241,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "rLibros";
             this.Text = "Registro de Libros";
             this.Load += new System.EventHandler(this.rLibros_Load);

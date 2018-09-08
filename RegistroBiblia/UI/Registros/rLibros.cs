@@ -17,22 +17,39 @@ namespace RegistroBiblia.UI.Registros
         {
             InitializeComponent();
         }
+        private void inactivo()
+        {
+            Guardar_button.Enabled = false;
+            Descripcion_textBox.Enabled = false;
+            Siglas_textBox.Enabled = false;
+            TipId_comboBox.Enabled = false;
+        }
+        private void activos()
+        {
+            Guardar_button.Enabled = true;
+            Descripcion_textBox.Enabled = true;
+            Siglas_textBox.Enabled = true;
+            TipId_comboBox.Enabled = true;
+        }
 
         private void rLibros_Load(object sender, EventArgs e)
         {
-
+            inactivo();
         }
         private void Limpiar()
         {
             LibroId_numericUpDown.Value = 0;
-             string.IsNullOrWhiteSpace(Descripcion_textBox.Text);
-             string.IsNullOrWhiteSpace(Siglas_textBox.Text);
-             string.IsNullOrWhiteSpace(TipId_comboBox.Text);
+             Descripcion_textBox.Text = string.Empty;
+             Siglas_textBox.Text = string.Empty;
+             TipId_comboBox.Text = string.Empty;
         }
         // aqui se crea el boton nuevo
         private void Nuevo_button_Click(object sender, EventArgs e)
         {
             Limpiar();
+            activos();
+            Nuevo_button.Enabled = false;
+            Eliminar_button.Enabled = false;
         }
 
         private Libros LlenaClase()
@@ -70,7 +87,7 @@ namespace RegistroBiblia.UI.Registros
             if ( string.IsNullOrWhiteSpace(Descripcion_textBox.Text) ||  string.IsNullOrWhiteSpace(Siglas_textBox.Text) ||string.IsNullOrWhiteSpace(TipId_comboBox.Text))
             {
 
-                if ( string.IsNullOrWhiteSpace(Descripcion_textBox.Text))
+                if (string.IsNullOrWhiteSpace(Descripcion_textBox.Text))
                 {
                     SuperErrorProvider.SetError(Descripcion_textBox, "ingrese Descripcion");
                     Descripcion_textBox.Focus();
@@ -105,8 +122,12 @@ namespace RegistroBiblia.UI.Registros
                 {
                     if (LibrosBLL.Guardar(libros_guardar))
                     {
-                        MessageBox.Show("libro guardado");
-                        Nuevo_button.PerformClick();
+                       MessageBox.Show("libro guardado");
+                        Limpiar();
+                        inactivo();
+                        Nuevo_button.Enabled = true;
+                        Eliminar_button.Enabled = true;
+
                     }
                     
                     else
@@ -135,16 +156,23 @@ namespace RegistroBiblia.UI.Registros
 
             Libros libros = BLL.LibrosBLL.Buscar(id);
 
-
-            
             if (libros != null)
             {
                 BLL.LibrosBLL.Eliminar(id);
-                MessageBox.Show("nose puede eliminar un libro que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("libro eliminado");
+                Limpiar();
+                inactivo();
+                Nuevo_button.Enabled = true;
+                Eliminar_button.Enabled = true;
             }
             else
             {
-                MessageBox.Show("libro eliminado");
+            
+                MessageBox.Show("nose puede eliminar un libro que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Nuevo_button.PerformClick();
+                inactivo();
+                Nuevo_button.Enabled = true;
+                Eliminar_button.Enabled = true;
             }
           
         }
@@ -159,12 +187,17 @@ namespace RegistroBiblia.UI.Registros
             if(libros != null)
             {
                 MessageBox.Show("libro encontrado");
- 
+                Eliminar_button.Enabled = true;
+                Guardar_button.Enabled = false;
+                Nuevo_button.Enabled = true;
                LlenaCampo(libros);
             }
             else
             {
                 MessageBox.Show("libro no encontrado");
+                inactivo();
+               // Nuevo_button.PerformClick();
+                Nuevo_button.Enabled = true;
             }
 
 
